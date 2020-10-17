@@ -11,6 +11,8 @@ Implement run-length encoding and decoding. You can assume the string to be enco
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RunLengthEncoding {
@@ -47,20 +49,22 @@ class RunLengthEncoding {
 
     @Test
     void decode() {
-        var decoded = new StringBuilder();
-        int numberOfChars = 0;
+        final var decoded = new StringBuilder();
+        int numberOfChars = -1;
 
-        for(char c : encodedText.toString().toCharArray()) {
+        for(char c : encodedText.toCharArray()) {
 
-            if(Character.isDigit(c)) {
+            if(numberOfChars == -1) {
                 numberOfChars = Character.getNumericValue( c );
             } else {
-                for(int i = 0; i < numberOfChars; i++) {
-                    decoded.append(c);
-                }
+                IntStream.range(0, numberOfChars).forEach(i -> {
+                       decoded.append(c);
+                });
+
+                numberOfChars = -1;  //reset
             }
         }
 
-        assertThat(decoded.toString()).isEqualTo(decodedText);
+        assertThat(decoded.toString()).as("Decoded is equal to %s", decodedText).isEqualTo(decodedText);
     }
 }
