@@ -8,6 +8,8 @@ import org.mzuri.scratchpad.domain.Animal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 @Slf4j
 public class Generics {
@@ -25,7 +27,29 @@ public class Generics {
         Animal animal = new Dog(  "test" );
 
         //Compile error
-        //animals.add( animal );
+        //animals.add( animal ); 
+
+                
+    }
+
+    public void functional() {
+        Consumer<String> consumer = (s) -> s.toCharArray();
+        Consumer<? extends String> covariantConsumer = (s) -> s.toString();
+        Consumer<? super String> contravariantConsumer = (s) -> s.charAt(2);
+       
+        Supplier<? extends Number> covariantSupplier = () -> Long.valueOf(34l);
+        Supplier<? super Number> contravariantSupplier = () -> Integer.valueOf(44);
+
+        
+        Object o = new Object();
+        
+        contravariantConsumer.accept("hello");        
+        // covariantConsumer.accept(o);
+
+//        Long l = covariantSupplier.get();
+        Object obj = contravariantSupplier.get();
+
+
     }
 
     public void biVariantAnimals(List<?> things) {
