@@ -33,7 +33,7 @@ public class KthPalindrome {
         int[] answers = new int[queries.length];
 
         int nextSequence = queries[position];
-        int sequenceNumber = 0;
+        int sequenceNumber = 1;
 
         while(true) {
             int pos = palindrome.length / 2;
@@ -101,7 +101,7 @@ class KthPalindromeTest {
     void test() {
         final KthPalindrome kthPalindrome = new KthPalindrome();
 
-        final List<Integer> queries = List.of(1, 2, 3, 4, 5, 89);
+        final List<Integer> queries = List.of(1, 2, 3, 4, 5, 90);
         int palindromeLength = 3;
 
         final int[] palindrome = kthPalindrome.findPalindromes(queries.stream().mapToInt(Integer::intValue).toArray(), palindromeLength);
