@@ -61,7 +61,7 @@ public class ThreeSum {
                     int iValue = nums[i];
 
                     if (iValue + kValue + jValue == 0) {
-                        List match = List.of(kValue, iValue, jValue);
+                        List<Integer> match = List.of(kValue, iValue, jValue);
 
                         final List<List<Integer>> collect = result.stream().map(ArrayList::new)
                                 .filter(it -> it.remove(Integer.valueOf(kValue)) && it.remove(Integer.valueOf(jValue)) && it.remove(Integer.valueOf(iValue)))
