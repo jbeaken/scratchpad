@@ -15,18 +15,17 @@ public class BadVersion extends VersionControl {
         int start = 0;
         int end = n;
 
-        while(true) {
+        while(start < end) {
             int pos = start + ((end - start) /2);
 
             if(isBadVersion( pos )) {
                 end = pos;
             } else {
-                if(isBadVersion( pos + 1)) {
-                    return pos + 1;
-                }
-                start = pos;
+                start = pos + 1;
             }
         }
+
+        return start;
     }
 }
 
