@@ -6,7 +6,8 @@ public class BadVersion extends VersionControl {
         final BadVersion badVersion = new BadVersion();
         badVersion.badVersionPosition = 4;
 
-        assert badVersion.firstBadVersion(5) == 4;
+        final int i = badVersion.firstBadVersion(5);
+        assert i == 4;
     }
 
     public int firstBadVersion(int n) {
@@ -15,8 +16,8 @@ public class BadVersion extends VersionControl {
         int end = n;
 
         while(true) {
-            if(start >= end) return start;
-            int pos = n/2;
+            int pos = start + ((end - start) /2);
+
             if(isBadVersion( pos )) {
                 end = pos;
             } else {
@@ -30,9 +31,9 @@ public class BadVersion extends VersionControl {
 }
 
 class VersionControl {
-    public int badVersionPosition;
+    int badVersionPosition;
 
     boolean isBadVersion(int position) {
-        return badVersionPosition == position ? true : false;
+        return badVersionPosition <= position ? true : false;
     }
 }
