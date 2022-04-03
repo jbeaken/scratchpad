@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+
 public class RomanNumerals {
 
     public int calculate(String numeral) {
@@ -12,54 +14,21 @@ public class RomanNumerals {
         int pos = 0;
 
         while (pos < numeral.length()) {
-            char ch = numeral.charAt(pos);
+            NumeralCharacter numeralCharacter = NumeralCharacter.valueOf(numeral.substring(pos, pos + 1));
+            final NumeralCharacter[] precedersArray = numeralCharacter.getPreceders();
 
-            if (ch == 'D') result += 500;
-            if (ch == 'C') {
-                if (pos == numeral.length() - 1) {
-                    result += 100;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'D') {
-                    result += 400;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'M') {
-                    result += 900;
+            if (pos == numeral.length() - 1 || precedersArray.length == 0) {
+                result += numeralCharacter.getValue();
+            } else  {
+                NumeralCharacter nextCharacter =  NumeralCharacter.valueOf(numeral.substring(pos + 1, pos + 2));
+                final boolean precederMatched = Arrays.asList(precedersArray).contains(nextCharacter);
+                if(precederMatched) {
+                    result += (nextCharacter.getValue() - numeralCharacter.getValue());
                     pos++;
                 } else {
-                    result += 100;
+                    result += numeralCharacter.getValue();
                 }
             }
-            if (ch == 'X') {
-                if (pos == numeral.length() - 1) {
-                    result += 10;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'L') {
-                    result += 40;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'C') {
-                    result += 90;
-                    pos++;
-                } else {
-                    result += 10;
-                }
-            }
-            if (ch == 'L') result += 50;
-            if (ch == 'V') result += 5;
-            if (ch == 'I') {
-                if (pos == numeral.length() - 1) {
-                    result += 1;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'V') {
-                    result += 4;
-                    pos++;
-                } else if (numeral.charAt(pos + 1) == 'X') {
-                    result += 9;
-                    pos++;
-                } else {
-                    result += 1;
-                }
-            }
-            if (ch == 'M') result += 1000;
             pos++;
         }
 
@@ -68,27 +37,36 @@ public class RomanNumerals {
 }
 
 enum NumeralCharacter {
+
+
+
     M(1000, null),
     D(500, null),
     L(50, null),
     V(5, null),
-    C(100, new NumeralCharacter[]{D, M}),
+    C(100, new NumeralCharacter[]{M, D}),
     X(10, new NumeralCharacter[]{L, C}),
     I(1, new NumeralCharacter[]{V, X});
 
     private final int value;
 
+    private final NumeralCharacter[] empty = new NumeralCharacter[]{};
+
     private NumeralCharacter[] preceders;
+
+    public int getValue() {
+        return value;
+    }
+
+    public NumeralCharacter[] getPreceders() {
+        return preceders;
+    }
 
     NumeralCharacter(int value, NumeralCharacter[] preceders) {
         this.value = value;
+        if(preceders == null) preceders = empty;
         this.preceders = preceders;
     }
-}
-
-class Numeral {
-    NumeralCharacter numeralCharacter;
-    int value;
 }
 
 class RomanNumeralsTest {
