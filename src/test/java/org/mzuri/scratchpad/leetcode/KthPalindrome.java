@@ -41,7 +41,6 @@ public class KthPalindrome {
         //quick escape
         if(sequence > Math.pow(10, intLength / 2 + 1)) return -1;
 
-
         int sequenceNumber = 1;
 
         while(true) {
@@ -61,7 +60,7 @@ public class KthPalindrome {
             }
 
             incrementPalindrome(palindrome, pos);
-            System.out.println(getPalindromeAsInteger(palindrome));
+            log.info("{} {}",sequenceNumber, getPalindromeAsInteger(palindrome));
             sequenceNumber++;
         }
     }
