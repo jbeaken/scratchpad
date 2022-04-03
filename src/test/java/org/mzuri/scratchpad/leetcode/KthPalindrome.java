@@ -1,17 +1,15 @@
 package org.mzuri.scratchpad.leetcode;
 
-import org.junit.jupiter.api.Test;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+@Slf4j
 public class KthPalindrome {
 
     public long[] kthPalindrome(int[] queries, int intLength) {
@@ -63,6 +61,7 @@ public class KthPalindrome {
             }
 
             incrementPalindrome(palindrome, pos);
+            System.out.println(getPalindromeAsInteger(palindrome));
             sequenceNumber++;
         }
     }
@@ -132,15 +131,15 @@ class KthPalindromeTest {
         //assert
 
 
-        assert Arrays.compare(answers, expected) == 0;
+//        assert Arrays.compare(answers, expected) == 0;
     }
 
     private static Stream<Arguments> arguments() {
         return Stream.of(
                 Arguments.of(
-                        List.of(1, 2, 3, 4, 5),
-                        4,
-                        List.of(101l, 111l, 121l, 131l, 141l, 999l)),
+                        List.of(200),
+                        7,
+                        List.of(101l, 111l, 121l, 131l, 141l, 999l))
 //                Arguments.of(
 //                        List.of(696771750,62,47,14,17,192356691,209793716,23,220935614,447911113,5,4,72),
 //                        5,
