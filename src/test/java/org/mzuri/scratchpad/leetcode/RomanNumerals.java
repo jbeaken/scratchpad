@@ -15,18 +15,18 @@ public class RomanNumerals {
 
         while (pos < numeral.length()) {
             NumeralCharacter numeralCharacter = NumeralCharacter.valueOf(numeral.substring(pos, pos + 1));
-            final NumeralCharacter[] precedersArray = numeralCharacter.getPreceders();
+            final NumeralCharacter[] precedersArray = numeralCharacter.preceders;
 
             if (pos == numeral.length() - 1 || precedersArray.length == 0) {
-                result += numeralCharacter.getValue();
+                result += numeralCharacter.value;
             } else  {
-                NumeralCharacter nextCharacter =  NumeralCharacter.valueOf(numeral.substring(pos + 1, pos + 2));
-                final boolean precederMatched = Arrays.asList(precedersArray).contains(nextCharacter);
-                if(precederMatched) {
-                    result += (nextCharacter.getValue() - numeralCharacter.getValue());
-                    pos++;
+                NumeralCharacter potentialPreceder =  NumeralCharacter.valueOf(numeral.substring(pos + 1, pos + 2));
+
+                if(numeralCharacter.hasPreceder( potentialPreceder )) {
+                    result += (potentialPreceder.value - numeralCharacter.value);
+                    pos++;  //skip next character, already been taken into account
                 } else {
-                    result += numeralCharacter.getValue();
+                    result += numeralCharacter.value;
                 }
             }
             pos++;
@@ -46,18 +46,14 @@ enum NumeralCharacter {
     X(10, new NumeralCharacter[]{L, C}),
     I(1, new NumeralCharacter[]{V, X});
 
-    private final int value;
+    public final int value;
 
     private final NumeralCharacter[] empty = new NumeralCharacter[]{};
 
-    private NumeralCharacter[] preceders;
+    public final NumeralCharacter[] preceders;
 
-    public int getValue() {
-        return value;
-    }
-
-    public NumeralCharacter[] getPreceders() {
-        return preceders;
+    public boolean hasPreceder(NumeralCharacter potentialPreceder) {
+        return Arrays.asList(preceders).contains(potentialPreceder);
     }
 
     NumeralCharacter(int value, NumeralCharacter[] preceders) {
