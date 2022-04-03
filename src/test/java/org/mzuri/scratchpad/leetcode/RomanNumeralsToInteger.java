@@ -65,11 +65,11 @@ enum NumeralCharacter {
     }
 }
 
-class RomanNumeralsTest {
+class RomanNumeralsToIntTest {
 
     @ParameterizedTest
     @CsvSource({ "DCLVII, 657", "IV, 4", "VI, 6", "X, 10", "IX, 9", "XI, 11", "LVIII, 58", "MCMXCIV, 1994", "MMMCC, 3200"})
-    void test(String numeral, int expected) {
+    void testRomanNumeral(String numeral, int expected) {
         final RomanNumeralsToInteger romanNumerals = new RomanNumeralsToInteger();
 
         final int result = romanNumerals.calculate(numeral);
