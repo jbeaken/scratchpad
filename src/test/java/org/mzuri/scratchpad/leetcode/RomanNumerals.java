@@ -38,8 +38,6 @@ public class RomanNumerals {
 
 enum NumeralCharacter {
 
-
-
     M(1000, null),
     D(500, null),
     L(50, null),
