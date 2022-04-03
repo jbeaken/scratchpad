@@ -1,6 +1,8 @@
 package org.mzuri.scratchpad.leetcode;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -22,7 +24,6 @@ public class IntToRomanNumeral {
         String tensInRomanNumerals = getPartial(tens, List.of("C", "L", "X"));
         String singlesInRomanNumerals = getPartial(singles, List.of("X", "V", "I"));
 
-
         result.append(hundredsInRomanNumerals);
         result.append(tensInRomanNumerals);
         result.append(singlesInRomanNumerals);
@@ -42,7 +43,9 @@ public class IntToRomanNumeral {
             case 7:
             case 6:
             case 5:
-               return characters.get(1);
+                result.append(characters.get(1));
+                IntStream.range(5, quantity).forEach(it -> result.append(characters.get(2)));
+                return result.toString();
             case 4:
                 return characters.get(2) + characters.get(1);
             default:
@@ -52,16 +55,16 @@ public class IntToRomanNumeral {
     }
 }
 
-
 class IntToRomanNumeralTest {
 
-    @Test
-    void test() {
-
-        int numberToConvert = 2354;
+    @ParameterizedTest
+    @CsvSource({"2354, MMCCCLIV", "58, LVIII"})
+    void test(int numberToConvert, String expected) {
 
         final IntToRomanNumeral intToRomanNumeral = new IntToRomanNumeral();
 
         final String romanNumeral = intToRomanNumeral.convert(numberToConvert);
+
+        Assertions.assertEquals(expected, romanNumeral);
     }
 }
