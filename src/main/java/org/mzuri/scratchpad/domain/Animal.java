@@ -3,9 +3,6 @@ package org.mzuri.scratchpad.domain;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @EqualsAndHashCode(of = "name")
 public abstract class Animal implements Comparable<Animal> {
 

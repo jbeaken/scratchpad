@@ -7,7 +7,7 @@ import lombok.ToString;
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
-public class Cat extends Animal {
+public class Cat extends Pet {
 
     public Cat(String name) {
         super(name);
