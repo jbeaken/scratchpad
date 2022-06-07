@@ -6,6 +6,10 @@ import lombok.*;
 @EqualsAndHashCode(of = "name")
 public abstract class Animal implements Comparable<Animal> {
 
+    public Animal(String name) {
+        super();
+        this.name = name;
+    }
 
     public abstract boolean hasTail();
 
