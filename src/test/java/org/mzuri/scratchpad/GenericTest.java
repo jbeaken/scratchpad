@@ -34,16 +34,18 @@ public class GenericTest {
 
     @Test
     public void testAppend() {
-        List<Integer> integers = new ArrayList<>(List.of(2, 3, 4));
+        List<Number> integers = new ArrayList<>(List.of(2, 3, 4));
 
-        append(integers, 3);
+		integers.add(3);
 
         log.info(Arrays.toString(integers.toArray()));
     }
 
-    public static void append(Collection<Integer> integers, int n) {
-        for (int i = 1; i <= n; i++) {
-            integers.add(i);
-        }
-    }
+	@Test
+	void arraysReified() {
+		assert
+		String[] arrayOfStrings = new String[10];
+		Object[] arrayOfObjects = arrayOfStrings; // compiles fine
+		arrayOfObjects[0] = new Integer(2); // throws a runtime exception (ArrayStoreException IIRC)
+	}
 }
