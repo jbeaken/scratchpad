@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mzuri.scratchpad.domain.Animal;
 import org.mzuri.scratchpad.domain.Dog;
@@ -43,9 +44,10 @@ public class GenericTest {
 
 	@Test
 	void arraysReified() {
-		assert
-		String[] arrayOfStrings = new String[10];
-		Object[] arrayOfObjects = arrayOfStrings; // compiles fine
-		arrayOfObjects[0] = new Integer(2); // throws a runtime exception (ArrayStoreException IIRC)
+        Assertions.assertThrows(ArrayStoreException.class, () -> {
+            String[] arrayOfStrings = new String[10];
+            Object[] arrayOfObjects = arrayOfStrings; // compiles fine
+            arrayOfObjects[0] = 2; // throws a runtime exception (ArrayStoreException IIRC)
+        });
 	}
 }
