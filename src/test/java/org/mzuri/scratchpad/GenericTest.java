@@ -46,7 +46,8 @@ public class GenericTest {
 	void arraysReified() {
         Assertions.assertThrows(ArrayStoreException.class, () -> {
             String[] arrayOfStrings = new String[10];
-            Object[] arrayOfObjects = arrayOfStrings; // compiles fine
+            Object[] arrayOfObjects = new String[10]; // compiles fine
+            arrayOfObjects[0] = "2";
             arrayOfObjects[0] = 2; // throws a runtime exception (ArrayStoreException IIRC)
         });
 	}
