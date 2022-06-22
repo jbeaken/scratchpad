@@ -69,8 +69,6 @@ public class GenericTest {
         ArgumentsProcessor<Integer> argumentsProcessor = (arg1, arg2) -> arg1 + arg2;
 
         argumentsProcessor.process(1, 2);
-
-
     }
 }
 
@@ -78,4 +76,9 @@ public class GenericTest {
 @FunctionalInterface
 interface ArgumentsProcessor<X extends Number> {
     X process(X arg1, X arg2);
+}
+
+@FunctionalInterface
+interface ArgumentsProcessor2<X extends Number> {
+    X  process(X arg1, X arg2);
 }
