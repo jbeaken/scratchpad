@@ -22,14 +22,12 @@ public class Generics {
         );
 
         //Compile error
-        //animals.add( new Dog(true, "test"));
+//        animals.add( new Dog("test"));
 
         Animal animal = new Dog(  "test" );
 
         //Compile error
         //animals.add( animal ); 
-
-                
     }
 
     public void functional() {
@@ -69,13 +67,18 @@ public class Generics {
     public void contraAnimals(List<? super Dog> dogs) {
 
         //Compile error
-        //Animal a = dogs.get(0);
+//        Animal a = dogs.get(0);
 
         //Can only be sure elements are of type Object
         Object obj = dogs.get( 0 );
 
         //Compile error
 //        Dog dog = dogs.get(0);
+
+        Animal animal = new Dog("test");
+
+        dogs.add(new Dog("test"));
+//        dogs.add(animal);
 
         //Treats as object ref
         dogs.forEach( a ->
