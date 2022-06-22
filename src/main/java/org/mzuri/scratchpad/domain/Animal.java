@@ -4,14 +4,17 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of = "name")
-public abstract class Animal implements Comparable<Animal> {
+@NoArgsConstructor
+public class Animal implements Comparable<Animal> {
 
     public Animal(String name) {
         super();
         this.name = name;
     }
 
-    public abstract boolean hasTail();
+    public boolean hasTail() {
+        return false;
+    }
 
     private String name;
 

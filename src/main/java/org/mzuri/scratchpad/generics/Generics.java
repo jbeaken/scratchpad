@@ -46,22 +46,18 @@ public class Generics {
 
 //        Long l = covariantSupplier.get();
         Object obj = contravariantSupplier.get();
-
-
     }
 
     public void biVariantAnimals(List<?> things) {
         things.forEach( a ->
                 log.info( a.toString() )
         );
-
     }
 
     public void invariantAnimals(List<Animal> animals) {
         animals.forEach( a ->
                 log.info( a.toString() )
         );
-
     }
 
     public void contraAnimals(List<? super Dog> dogs) {

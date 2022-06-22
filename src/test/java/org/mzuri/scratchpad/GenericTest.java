@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mzuri.scratchpad.domain.Animal;
+import org.mzuri.scratchpad.domain.Cat;
 import org.mzuri.scratchpad.domain.Dog;
+import org.mzuri.scratchpad.domain.Pet;
 import org.mzuri.scratchpad.generics.Generics;
 
 @Slf4j
@@ -51,4 +53,29 @@ public class GenericTest {
             arrayOfObjects[0] = 2; // throws a runtime exception (ArrayStoreException IIRC)
         });
 	}
+
+    @Test
+    void testContravariance() {
+        List<? extends Animal> extendsAnimals = new ArrayList<>(List.of(new Dog("woof")));
+        List<? super Pet> superAnimals = new ArrayList<>(List.of(new Dog("woof")));
+        List<? super Dog> superDogs = new ArrayList<>(List.of(new Pet("woof")));
+
+        superAnimals.add(new Dog());
+        superAnimals.add(new Cat());
+    }
+
+    @Test
+    void testArgumentsProcessor() {
+        ArgumentsProcessor<Integer> argumentsProcessor = (arg1, arg2) -> arg1 + arg2;
+
+        argumentsProcessor.process(1, 2);
+
+
+    }
+}
+
+
+@FunctionalInterface
+interface ArgumentsProcessor<X extends Number> {
+    X process(X arg1, X arg2);
 }
