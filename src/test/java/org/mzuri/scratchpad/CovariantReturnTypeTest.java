@@ -17,7 +17,7 @@ public class CovariantReturnTypeTest {
 
     public static void test() {
         ArrayList<Cat> objects = new ArrayList<>();
-        addDogs(objects);
+//        addDogs(objects);
     }
 
 }

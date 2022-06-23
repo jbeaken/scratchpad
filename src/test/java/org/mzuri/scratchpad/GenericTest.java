@@ -39,20 +39,20 @@ public class GenericTest {
     public void testAppend() {
         List<Number> integers = new ArrayList<>(List.of(2, 3, 4));
 
-		integers.add(3);
+        integers.add(3);
 
         log.info(Arrays.toString(integers.toArray()));
     }
 
-	@Test
-	void arraysReified() {
+    @Test
+    void arraysReified() {
         Assertions.assertThrows(ArrayStoreException.class, () -> {
             String[] arrayOfStrings = new String[10];
             Object[] arrayOfObjects = new String[10]; // compiles fine
             arrayOfObjects[0] = "2";
             arrayOfObjects[0] = 2; // throws a runtime exception (ArrayStoreException IIRC)
         });
-	}
+    }
 
     @Test
     void testContravariance() {
@@ -70,6 +70,15 @@ public class GenericTest {
 
         argumentsProcessor.process(1, 2);
     }
+
+    @Test
+    void testAlgorithmMax() {
+        List<String> strings = List.of("this", "is", "a", "list", "of", "strings");
+
+        final String max = Algorithm.max(strings, 0, 6);
+
+        log.info(max);
+    }
 }
 
 
@@ -80,16 +89,27 @@ interface ArgumentsProcessor<X extends Number> {
 
 @FunctionalInterface
 interface ArgumentsProcessor2<X extends Number> {
-    X  process(X arg1, X arg2);
+    X process(X arg1, X arg2);
 }
 
-public final class Algorithm {
+final class Algorithm {
 
-    public static <T> T max(T[] array, int first, int second) {
+    public static <T> void swap(T[] array, int first, int second) {
         T elementFirst = array[first];
         T elementSecond = array[second];
 
         array[first] = elementSecond;
         array[second] = elementFirst;
+    }
+
+    public static <T extends Object & Comparable<? super T>> T max(List<? extends T> list, int begin, int end) {
+
+        T maxElem = list.get(begin);
+
+        for (++begin; begin < end; ++begin)
+            if (maxElem.compareTo(list.get(begin)) < 0)
+                maxElem = list.get(begin);
+
+        return maxElem;
     }
 }
