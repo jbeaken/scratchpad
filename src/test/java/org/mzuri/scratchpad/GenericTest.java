@@ -133,8 +133,8 @@ final class Algorithm {
         array[second] = elementFirst;
     }
 
-    public static <T> long countIf(Collection<T> collection, Predicate<T> predicate) {
-        return collection.stream().filter(predicate::test).count();
+    public static <T extends Number> long countIf(Collection<T> collection, Predicate<T> predicate) {
+        return collection.stream().filter(predicate).count();
     }
 
     public static <T extends Comparable<T>> T max(List<T> list, int begin, int end) {
