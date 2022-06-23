@@ -83,8 +83,20 @@ public class GenericTest {
         log.info(max);
         log.info("" + maxInteger);
     }
+
+    @Test
+    void testNode() {
+        Node<Circle> nc = new Node<>();
+        Node<? extends Shape>  ns = nc;
+
+        Node2<? extends Compar> node = new Node2<>();
+        Node2<Integer> comp = node;
+    }
 }
 
+class Node2<T extends Comparable<T>> {
+    public int compareTo(T obj) { return 0; }
+}
 
 @FunctionalInterface
 interface ArgumentsProcessor<X extends Number> {
@@ -106,7 +118,7 @@ final class Algorithm {
         array[second] = elementFirst;
     }
 
-    public static <T extends Object & Comparable<? super T>> T max(List<? extends T> list, int begin, int end) {
+    public static <T extends Object & Comparable<? super T>> T max(List<T> list, int begin, int end) {
 
         T maxElem = list.get(begin);
 
@@ -117,3 +129,8 @@ final class Algorithm {
         return maxElem;
     }
 }
+class Shape { /* ... */ }
+class Circle extends Shape { /* ... */ }
+
+class Node<T> { /* ... */ }
+
