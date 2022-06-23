@@ -1,10 +1,7 @@
 package org.mzuri.scratchpad;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 import lombok.extern.slf4j.Slf4j;
@@ -106,6 +103,17 @@ public class GenericTest {
         animals.add(new Pet());
         animals.add(new Cat());
     }
+
+    @Test
+    void testCollectionsCopy() {
+        List<Pet> pets = new ArrayList<>();
+        List<Dog> dogs = new ArrayList<>();
+
+        Collections.<Pet>copy(pets, dogs);
+
+        Collections.<Pet>sort(pets);
+
+    }
 }
 
 class Node2<T extends Comparable<T>> {
@@ -125,7 +133,7 @@ interface ArgumentsProcessor2<X extends Number> {
 //Write a generic method to countIf the number of elements in a collection that have a specific property (for example, odd integers, prime numbers, palindromes).
 final class Algorithm<V extends Animal> {
 
-    public static <T, V> void swap(T[] array, int first, int second) {
+    public static <T> void swap(T[] array, int first, int second) {
         T elementFirst = array[first];
         T elementSecond = array[second];
 
@@ -137,7 +145,7 @@ final class Algorithm<V extends Animal> {
         return collection.stream().filter(predicate).count();
     }
 
-    public static <T extends Comparable<T>> T max(List<T> list, int begin, int end) {
+    public static <T extends Object & Comparable<T>> T max(List<T> list, int begin, int end) {
         T maxElem = list.get(0);
 
         for(++begin; begin < end; ++begin) {
