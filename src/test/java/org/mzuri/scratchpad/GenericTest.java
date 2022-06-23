@@ -82,3 +82,14 @@ interface ArgumentsProcessor<X extends Number> {
 interface ArgumentsProcessor2<X extends Number> {
     X  process(X arg1, X arg2);
 }
+
+public final class Algorithm {
+
+    public static <T> T max(T[] array, int first, int second) {
+        T elementFirst = array[first];
+        T elementSecond = array[second];
+
+        array[first] = elementSecond;
+        array[second] = elementFirst;
+    }
+}
