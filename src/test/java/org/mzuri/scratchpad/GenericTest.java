@@ -73,11 +73,15 @@ public class GenericTest {
 
     @Test
     void testAlgorithmMax() {
+        List<Integer> integers = List.of(2, 5, 7, 4, 66, 7, 8, 9);
+
         List<String> strings = List.of("this", "is", "a", "list", "of", "strings");
 
         final String max = Algorithm.max(strings, 0, 6);
+        final Integer maxInteger = Algorithm.max(integers, 0, 6);
 
         log.info(max);
+        log.info("" + maxInteger);
     }
 }
 
