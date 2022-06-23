@@ -123,9 +123,9 @@ interface ArgumentsProcessor2<X extends Number> {
 }
 
 //Write a generic method to countIf the number of elements in a collection that have a specific property (for example, odd integers, prime numbers, palindromes).
-final class Algorithm {
+final class Algorithm<V extends Animal> {
 
-    public static <T> void swap(T[] array, int first, int second) {
+    public static <T, V> void swap(T[] array, int first, int second) {
         T elementFirst = array[first];
         T elementSecond = array[second];
 
