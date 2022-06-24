@@ -2,7 +2,9 @@ package org.mzuri.scratchpad;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -40,6 +42,19 @@ public class GenericTest {
         integers.add(3);
 
         log.info(Arrays.toString(integers.toArray()));
+
+        //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+        List<Integer> list = List.of(1, 2, 3, 4);
+        Function<Integer, String> stringMapper = (i) -> String.valueOf(i);
+        final List<String> collect2 = list.stream().map(stringMapper).collect(Collectors.toList());
+
+
+        //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+        List<Float> doubleList = List.of(1f, 2f, 3f, 4f);
+        Function<Float, Integer> mapper = (i) -> i.intValue();
+        final List<Integer> collect3 = doubleList.stream().map(mapper).collect(Collectors.toList());
+
+
     }
 
     @Test
@@ -94,6 +109,10 @@ public class GenericTest {
     void testNode() {
         Node<Circle> nc = new Node<>();
         Node<? extends Shape>  ns = nc;
+
+        Node<Integer> node = new Node<Integer>();
+
+        Node<?> nodey = node;
     }
 
     @Test
