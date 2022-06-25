@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Slf4j
 public class MaxOfIntegerList {
@@ -27,6 +28,10 @@ public class MaxOfIntegerList {
 
         log.info("result : {}", integer);
     }
+
+//    <T, R> Stream<R> map(Function<? super T, ? extends R> mapper) {
+//        return mapper.apply();
+//    }
 
     <T, R> void printResult(Function<T, R> function, T t) {
         final var result = function.apply(t);
