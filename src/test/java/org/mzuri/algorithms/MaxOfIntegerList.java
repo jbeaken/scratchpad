@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -25,6 +26,7 @@ public class MaxOfIntegerList {
         final int ii = integers.stream().max((i1, i2) -> i1.compareTo(i2)).orElse(-1);
         final int i3 = integers.stream().max(Comparator.naturalOrder()).orElse(-1);
         final int i4 = integers.stream().max(comparator).orElse(-1);
+        final List<Double> collect = integers.stream().map(Integer::doubleValue).collect(Collectors.toList());
 
         log.info("result : {}", integer);
     }
