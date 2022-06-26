@@ -107,12 +107,12 @@ public class GenericTest {
 
     @Test
     void testNode() {
-        org.mzuri.scratchpad.binarytree.Node<Circle> nc = new org.mzuri.scratchpad.binarytree.Node<>();
-        org.mzuri.scratchpad.binarytree.Node<? extends Shape> ns = nc;
+        Node<Circle> nc = new Node<>();
+        Node<? extends Shape> ns = nc;
 
-        org.mzuri.scratchpad.binarytree.Node<Integer> node = new org.mzuri.scratchpad.binarytree.Node<Integer>();
+        Node<Integer> node = new Node<Integer>();
 
-        org.mzuri.scratchpad.binarytree.Node<?> nodey = node;
+        Node<?> nodey = node;
     }
 
     @Test
