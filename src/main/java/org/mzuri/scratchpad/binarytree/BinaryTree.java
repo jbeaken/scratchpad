@@ -1,10 +1,11 @@
 package org.mzuri.scratchpad.binarytree;
 
-
 import java.util.Stack;
 
 public class BinaryTree {
+
     Node root;
+
     private StringBuilder result = new StringBuilder();
 
     public String getResult() {
@@ -14,7 +15,6 @@ public class BinaryTree {
     BinaryTree() { root = null; }
 
     /* Given a binary tree, record its nodes according to the "bottom-up" postorder traversal. */
-    //4,5,2,3,1
     void postOrder(Node node)	{
         if (node == null) return;
 
@@ -24,7 +24,6 @@ public class BinaryTree {
     }
 
     /* Given a binary tree, record its nodes in inorder*/
-    //4,2,5,1,3
     void inOrder(Node node) {
         if (node == null) return;
 
@@ -34,7 +33,6 @@ public class BinaryTree {
     }
 
     /* Given a binary tree, record its nodes in preorder*/
-    //1,2,4,5,3
     void preOrder(Node node) {
         if (node == null) return;
 
