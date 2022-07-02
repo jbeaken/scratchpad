@@ -29,7 +29,13 @@ public class BinaryTreeRecursionTest {
     }
 
     @Test
-    void testDepthFirstRecursion() {
+    void testDepthFirstPreOrderRecursion() {
+        tree.preOrder(tree.root);
+//        assertEquals(tree.result.toString(),"4 2 5 1 3");
+    }
+
+    @Test
+    void testDepthFirstPostOrderRecursion() {
         tree.preOrder(tree.root);
 //        assertEquals(tree.result.toString(),"4 2 5 1 3");
     }
