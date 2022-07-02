@@ -36,6 +36,6 @@ public class BinaryTreeRecursionTest {
     @Test
     void testDepthFirstPostOrderRecursion() {
         tree.postOrder(tree.root);
-        assertEquals(tree.getResult(),"4 2 5 1 3");
+        assertEquals(tree.getResult(),"4 5 2 3 1");
     }
 }
