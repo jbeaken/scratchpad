@@ -39,11 +39,6 @@ public class BinaryTreeRecursion {
         preOrder(node.right);
     }
 
-    // Wrappers over above recursive functions
-    void postOrder() { postOrder(root); }
-    void inOrder() { inOrder(root); }
-    void preOrder() { preOrder(root); }
-
     private void visit(Node node) {
         result.append(node.key + " ");
     }

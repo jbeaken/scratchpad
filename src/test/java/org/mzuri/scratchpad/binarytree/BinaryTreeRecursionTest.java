@@ -24,25 +24,25 @@ public class BinaryTreeRecursionTest {
 
     @Test
     void testDepthFirstInOrderRecursion() {
-        tree.inOrder();
+        tree.inOrder(tree.root);
         assertEquals(tree.getResult(),"4 2 5 1 3");
     }
 
     @Test
     void testDepthFirstRecursion() {
-        tree.preOrder();
+        tree.preOrder(tree.root);
 //        assertEquals(tree.result.toString(),"4 2 5 1 3");
     }
 
-    @Test
-    void testDepthFirstStack() {
-        log.info("Preorder traversal of binary tree is ");
-        tree.traversePreOrderWithoutRecursion();
-
-        log.info("\nInorder traversal of binary tree is ");
-        tree.traverseInOrderWithoutRecursion();
-
-        log.info("\nPostorder traversal of binary tree is ");
-        tree.traversePostOrderWithoutRecursion();
-    }
+//    @Test
+//    void testDepthFirstStack() {
+//        log.info("Preorder traversal of binary tree is ");
+//        tree.traversePreOrderWithoutRecursion();
+//
+//        log.info("\nInorder traversal of binary tree is ");
+//        tree.traverseInOrderWithoutRecursion();
+//
+//        log.info("\nPostorder traversal of binary tree is ");
+//        tree.traversePostOrderWithoutRecursion();
+//    }
 }
