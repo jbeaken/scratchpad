@@ -31,13 +31,13 @@ public class BinaryTreeRecursionTest {
     @Test
     void testDepthFirstPreOrderRecursion() {
         tree.preOrder(tree.root);
-//        assertEquals(tree.result.toString(),"4 2 5 1 3");
+        assertEquals(tree.getResult(),"4 2 5 1 3");
     }
 
     @Test
     void testDepthFirstPostOrderRecursion() {
         tree.preOrder(tree.root);
-//        assertEquals(tree.result.toString(),"4 2 5 1 3");
+        assertEquals(tree.getResult(),"4 2 5 1 3");
     }
 
 //    @Test
