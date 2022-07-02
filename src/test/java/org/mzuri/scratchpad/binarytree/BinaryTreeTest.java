@@ -23,13 +23,15 @@ public class BinaryTreeTest {
     }
 
     @Test
+    void testDepthFirstInOrderRecursion() {
+        tree.inOrder();
+        assertEquals(tree.getResult(),"4 2 5 1 3");
+    }
+
+    @Test
     void testDepthFirstRecursion() {
         tree.preOrder();
-        assertEquals(tree.result.toString(),"5 4 3 3 2");
-
-        tree.inOrder();
-
-        tree.postOrder();
+//        assertEquals(tree.result.toString(),"4 2 5 1 3");
     }
 
     @Test

@@ -5,7 +5,11 @@ import java.util.Stack;
 
 public class BinaryTree {
     Node root;
-    StringBuilder result = new StringBuilder();
+    private StringBuilder result = new StringBuilder();
+
+    public String getResult() {
+        return result.toString().trim();
+    }
 
     BinaryTree() { root = null; }
 
