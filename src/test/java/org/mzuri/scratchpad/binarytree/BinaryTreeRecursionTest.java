@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-public class BinaryTreeTest {
+public class BinaryTreeRecursionTest {
 
-    BinaryTree tree = new BinaryTree();
+    BinaryTreeRecursion tree = new BinaryTreeRecursion();
 
     @BeforeEach
     void beforeAll() {

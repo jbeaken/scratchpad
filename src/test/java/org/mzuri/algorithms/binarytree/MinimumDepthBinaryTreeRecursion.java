@@ -3,7 +3,7 @@ package org.mzuri.algorithms.binarytree;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MinimumDepthBinaryTree {
+public class MinimumDepthBinaryTreeRecursion {
 
     @Test
     public void test() {

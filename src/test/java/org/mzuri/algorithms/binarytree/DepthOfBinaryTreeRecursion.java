@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 @Slf4j
-public class DepthOfBinaryTree {
+public class DepthOfBinaryTreeRecursion {
 
     @Test
     public void test() {

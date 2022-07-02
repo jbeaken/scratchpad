@@ -2,7 +2,7 @@ package org.mzuri.scratchpad.binarytree;
 
 import java.util.Stack;
 
-public class BinaryTree {
+public class BinaryTreeDataStructures {
 
     Node root;
 
@@ -12,41 +12,9 @@ public class BinaryTree {
         return result.toString().trim();
     }
 
-    BinaryTree() { root = null; }
+    BinaryTreeDataStructures() { root = null; }
 
-    /* Given a binary tree, record its nodes according to the "bottom-up" postorder traversal. */
-    void postOrder(Node node)	{
-        if (node == null) return;
-
-        postOrder(node.left);
-        postOrder(node.right);
-        record(node);
-    }
-
-    /* Given a binary tree, record its nodes in inorder*/
-    void inOrder(Node node) {
-        if (node == null) return;
-
-        inOrder(node.left);
-        record(node);
-        inOrder(node.right);
-    }
-
-    /* Given a binary tree, record its nodes in preorder*/
-    void preOrder(Node node) {
-        if (node == null) return;
-
-        record(node);
-        preOrder(node.left);
-        preOrder(node.right);
-    }
-
-    // Wrappers over above recursive functions
-    void postOrder() { postOrder(root); }
-    void inOrder() { inOrder(root); }
-    void preOrder() { preOrder(root); }
-
-    private void record(Node node) {
+    private void visit(Node node) {
         result.append(node.key + " ");
     }
 
@@ -61,7 +29,7 @@ public class BinaryTree {
             }
 
             Node top = stack.pop();
-            record(top);
+            visit(top);
             current = top.right;
         }
     }
@@ -72,7 +40,7 @@ public class BinaryTree {
         stack.push(root);
         while(! stack.isEmpty()) {
             current = stack.pop();
-            record(current);
+            visit(current);
 
             if(current.right != null)
                 stack.push(current.right);
@@ -96,7 +64,7 @@ public class BinaryTree {
             if (!hasChild || isPrevLastChild) {
                 current = stack.pop();
 //                visit(current.value);
-                record(current);
+                visit(current);
                 prev = current;
             } else {
                 if (current.right != null) {
@@ -108,5 +76,4 @@ public class BinaryTree {
             }
         }
     }
-
 }
