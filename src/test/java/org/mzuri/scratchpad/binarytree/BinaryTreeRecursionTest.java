@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
@@ -31,24 +30,12 @@ public class BinaryTreeRecursionTest {
     @Test
     void testDepthFirstPreOrderRecursion() {
         tree.preOrder(tree.root);
-        assertEquals(tree.getResult(),"4 2 5 1 3");
+        assertEquals(tree.getResult(),"1 2 4 5 3");
     }
 
     @Test
     void testDepthFirstPostOrderRecursion() {
-        tree.preOrder(tree.root);
+        tree.postOrder(tree.root);
         assertEquals(tree.getResult(),"4 2 5 1 3");
     }
-
-//    @Test
-//    void testDepthFirstStack() {
-//        log.info("Preorder traversal of binary tree is ");
-//        tree.traversePreOrderWithoutRecursion();
-//
-//        log.info("\nInorder traversal of binary tree is ");
-//        tree.traverseInOrderWithoutRecursion();
-//
-//        log.info("\nPostorder traversal of binary tree is ");
-//        tree.traversePostOrderWithoutRecursion();
-//    }
 }
