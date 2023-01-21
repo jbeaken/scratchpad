@@ -47,21 +47,18 @@ public class IPAddress {
         String single = ip.substring(0, 1);
         getIP(i + 1, ip.substring(1), results, partial + single);
 
+        //fast fail
+        if(ip.charAt(0) == '0') return;
+
         if(ip.length() < 2) return;
         String dble = ip.substring(0, 2);
-        if(dble.charAt(0) != '0') {
-            getIP(i + 1, ip.substring(2), results, partial + dble);
-        }
+        getIP(i + 1, ip.substring(2), results, partial + dble);
 
         if(ip.length() < 3) return;
         String triple = ip.substring(0, 3);
-        if(triple.charAt(0) != '0') {
-            //Cannot be bigger than 255
-            if(Integer.parseInt(triple) <= 255) {
-                getIP(i + 1, ip.substring(3), results, partial + triple);
-            }
+        if(Integer.parseInt(triple) <= 255) {
+            getIP(i + 1, ip.substring(3), results, partial + triple);
         }
-        return;
     }
 }
 
