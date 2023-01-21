@@ -36,7 +36,6 @@ public class IPAddress {
             if(ip.length() == 0) {
                 results.add(new String(partial));
             }
-            partial = ""; //reset
             i--;
             return; //no more to do, have 4 octets
         }
@@ -46,9 +45,7 @@ public class IPAddress {
         //three options x, xx and xxx
         if(ip.length() < 1) return;
         String single = ip.substring(0, 1);
-        if(!single.equals("0")) {
-            getIP(i + 1, ip.substring(1), results, partial + single);
-        }
+        getIP(i + 1, ip.substring(1), results, partial + single);
 
         if(ip.length() < 2) return;
         String dble = ip.substring(0, 2);
