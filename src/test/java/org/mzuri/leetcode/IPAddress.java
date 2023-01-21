@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class IPAddress {
     @ParameterizedTest
-    @ValueSource(strings = { "25525511135", "101023", "0000"})
+    @ValueSource(strings = { "25525511135", "101023", "0000", "0"})
     public void test(String ip) {
         List<String> ipList = resolveIP(ip);
         System.out.println(ipList);
@@ -43,18 +43,29 @@ public class IPAddress {
         if(!partial.isEmpty()) partial += ".";
 
         //three options x, xx and xxx
+
+        //x
         if(ip.length() < 1) return;
+        if(ip.length() < ((5-i) * 1)) return; //check fail fast on too short a string
+        if(ip.length() > ((5-i) * 3)) return; //check fail fast on too long a string
+
         String single = ip.substring(0, 1);
         getIP(i + 1, ip.substring(1), results, partial + single);
 
         //fast fail
         if(ip.charAt(0) == '0') return;
 
+        //xx
         if(ip.length() < 2) return;
+        if(ip.length() - 1 < ((5-i) * 1)) return; //check fail fast on too short a string
+        if(ip.length() - 1 > ((5-i) * 3)) return; //check fail fast on too long a string
         String dble = ip.substring(0, 2);
         getIP(i + 1, ip.substring(2), results, partial + dble);
 
+        //xxx
         if(ip.length() < 3) return;
+        if(ip.length() - 2 < ((5-i) * 1)) return; //check fail fast on too short a string
+        if(ip.length() - 2 > ((5-i) * 3)) return; //check fail fast on too long a string
         String triple = ip.substring(0, 3);
         if(Integer.parseInt(triple) <= 255) {
             getIP(i + 1, ip.substring(3), results, partial + triple);
