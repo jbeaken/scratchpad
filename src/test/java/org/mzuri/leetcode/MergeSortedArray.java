@@ -32,28 +32,29 @@ public class MergeSortedArray {
         Assertions.assertTrue(Arrays.equals(nums1, new int[]{1, 2, 2, 3, 5, 6}));
     }
 
+    @Test
+    void test2() {
+        int[] nums1 = {2, 0}, nums2 = {1};
+        int m = 1, n = 1;
+
+        merge(nums1, m, nums2, n);
+
+        System.out.println(Arrays.toString(nums1));
+
+        Assertions.assertTrue(Arrays.equals(nums1, new int[]{1, 2}));
+    }
+
     public void merge(int[] nums1, int m, int[] nums2, int n) {
 
-        int x = 0;
-        int y = 0;
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
-        while (x < (m + n -1)) {
-
-            int left = nums1[x];
-            int right = nums2[y];
-
-            if (right < left ) {
-                for (int j = nums1.length - 2; j >= x; j--) {
-                    nums1[j + 1] = nums1[j];
-                }
-
-                nums1[x] = right;
-                y++;
-            } else if(x + y > m) {
-                nums1[++x] = right;
-                y++;
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
             } else {
-                x++;
+                nums1[k--] = nums2[j--];
             }
         }
     }
