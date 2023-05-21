@@ -27,6 +27,6 @@ public class DurationMessAround {
         LocalDate d4 = LocalDate.of(2021, 1, 1);
         d4 = d4.withDayOfMonth(d4.lengthOfMonth()).withMonth(2);
         System.out.println(d4);
-gst
+
     }
 }
