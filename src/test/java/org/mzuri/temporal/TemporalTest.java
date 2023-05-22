@@ -20,10 +20,19 @@ class TemporalTest {
     }
 
     @Test
-    void testInstance() {
-        Instant instant = Instant.ofEpochSecond(8000);
+    void testInstant() {
+        Instant instant = Instant.ofEpochSecond(800000);
 
         LocalDate localDate = LocalDate.ofInstant(instant, ZoneId.systemDefault());
         System.out.println(localDate);
     }
+    @Test
+    void testInstantTimezone() {
+            LocalDateTime d1 = LocalDate.of(2021, 4, 1).atStartOfDay();
+            Instant i1 = d1.toInstant(ZoneOffset.of("+18:00"));
+            LocalDate d2 = LocalDate.ofInstant(i1, ZoneId.of("UTC"));
+
+            System.out.println(d2);
+    }
+
 }
