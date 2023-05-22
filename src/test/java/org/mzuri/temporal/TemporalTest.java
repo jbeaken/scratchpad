@@ -7,7 +7,7 @@ import java.time.*;
 class TemporalTest {
 
     @Test
-    void test() {
+    void testBetweenZonedDateTime() {
         LocalDateTime dt = LocalDate.of(2021, 4, 1).atStartOfDay();
 
         //one hour between paris and london
@@ -17,5 +17,13 @@ class TemporalTest {
         Duration d2 = Duration.between(zdt1, zdt2);
         System.out.println(d1);
         System.out.println(d2);
+    }
+
+    @Test
+    void testInstance() {
+        Instant instant = Instant.ofEpochSecond(8000);
+
+        LocalDate localDate = LocalDate.ofInstant(instant, ZoneId.systemDefault());
+        System.out.println(localDate);
     }
 }
