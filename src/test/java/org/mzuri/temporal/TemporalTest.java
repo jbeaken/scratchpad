@@ -1,4 +1,11 @@
 package org.mzuri.temporal;
 
-public class TemporalTest {
+import org.junit.jupiter.api.Test;
+
+class TemporalTest {
+
+    @Test
+    void test() {
+
+    }
 }
