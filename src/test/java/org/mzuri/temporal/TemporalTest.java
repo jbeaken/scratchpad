@@ -31,7 +31,9 @@ class TemporalTest {
     @Test
     void testInstantTimezone() {
         LocalDateTime d1 = LocalDate.of(2021, 4, 1).atStartOfDay();
-        Instant i1 = d1.toInstant(ZoneOffset.of("+18:00"));
+        ZonedDateTime zonedDateTime = d1.atZone(ZoneOffset.of("+18:00"));
+        Instant i1 = zonedDateTime.toInstant();
+
         LocalDate d2 = LocalDate.ofInstant(i1, ZoneId.of("UTC"));
 
         System.out.println(d2);
