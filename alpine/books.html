@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<div
+  x-data="{ books: [] }"
+  x-init="
+    fetch('https://www.googleapis.com/books/v1/volumes?q=Alpine')
+      .then(res => res.json())
+      .then(res => {
+        books = res.items.map(item => item.volumeInfo)
+      })
+  "
+>
+<ul>
+    <template x-for="book in books">
+      <li x-text="book.title"></li>
+    </template>
+  </ul>
+</div>
+</body>
+</html>
+
