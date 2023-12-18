@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import static java.lang.foreign.ValueLayout.*;
 
-public class Example {
+public class PanamaVirtual {
 
     static Linker LINKER = Linker.nativeLinker();
     static SymbolLookup STDLIB = LINKER.defaultLookup();
