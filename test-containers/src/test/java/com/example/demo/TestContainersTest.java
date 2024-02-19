@@ -20,13 +20,11 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-
-    @Testcontainers
-    @SpringBootTest(webEnvironment = DEFINED_PORT)
-    @DirtiesContext(classMode = AFTER_CLASS)
-// Testcontainers require a valid docker installation.
-// When running the tests, ensure you have a valid Docker environment
+@Testcontainers
+@SpringBootTest(webEnvironment = DEFINED_PORT)
+@DirtiesContext(classMode = AFTER_CLASS)
 class TestContainersTest {
+
     @Container
     static MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
 

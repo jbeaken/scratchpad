@@ -13,12 +13,12 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DateTimeTest {
+class DateTimeTest {
 
 	Logger logger = LoggerFactory.getLogger("JacksonTest");
 	
 	@Test
-	public void test() throws IOException {
+	void test() throws IOException {
 		
 		//Create
 		Date date = new Date();
@@ -44,7 +44,8 @@ public class DateTimeTest {
 		
 	}
 	
-	@Test void formatDate() {
+	@Test
+	void formatDate() {
 		
 		LocalDate localDate = LocalDate.of(2019, 3, 16);
 		
@@ -56,7 +57,7 @@ public class DateTimeTest {
 	}
 	
 	@Test
-	public void createDateTimeFromUtilDateAndBackAgain() {
+	void createDateTimeFromUtilDateAndBackAgain() {
 		//Create
 		Date date = new Date();
 		
@@ -67,10 +68,5 @@ public class DateTimeTest {
 		assertThat(date.getHours() == ldt.getHour());
 		assertThat(date.getMinutes() == ldt.getMinute());
 		assertThat(date.getSeconds() == ldt.getSecond());
-		
-		
-		
 	}
-
-
 }
